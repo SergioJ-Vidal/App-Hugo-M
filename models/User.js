@@ -6,11 +6,11 @@ name: String,
 
 surname: String,
 
+password: String,
+
 age: Number,
 
 email: String,
-
-
 
 }, { timestamps: true });
 
