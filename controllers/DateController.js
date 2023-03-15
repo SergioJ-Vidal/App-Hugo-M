@@ -1,4 +1,5 @@
 const Date = require("../models/Date");
+const User = require("../models/User");
 
 const DateController = {
 
@@ -6,9 +7,9 @@ const DateController = {
 
         try {
 
-            const date = await Date.create({ ...req.body, userId: req.user._id })
+            const date = await Date.create({ ...req.body, Cliente: req.user._id })
 
-            const userRelated = await User.findByIdAndUpdate(req.user._id);
+            const userRelated = await User.findByIdAndUpdate(req.user._id)
 
             userRelated.Citas.push(date);
 

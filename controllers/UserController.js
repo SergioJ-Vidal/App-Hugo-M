@@ -28,13 +28,13 @@ const UserController = {
         try {
 
             const user = await User.findOne({ Email: req.body.Email, })
-                .populate({ path: "posts" })
+                // .populate({ path: "posts" })
 
             if (!user) {
                 return res.status(400).send("Usuario o contraseña incorrectos")
             }
 
-            const isMatch = bcrypt.compare(req.body.password, user.password)
+            const isMatch = bcrypt.compare(req.body.Password, user.Password)
 
             if (!isMatch) {
                 return res.status(400).send("Usuario o contraseña incorrectos")
