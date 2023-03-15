@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const moment = require('moment');
 
 const UserSchema = new mongoose.Schema({
 
@@ -31,8 +32,10 @@ const UserSchema = new mongoose.Schema({
 UserSchema.pre('save', function (next) {
     const fecha_nacimiento = this.Fecha_nacimiento;
     const edad = Math.floor((Date.now() - fecha_nacimiento.getTime()) / (1000 * 60 * 60 * 24 * 365));
-    console.log(edad)
     this.Edad = edad;
+    const fechaFormateada = moment(this.Fecha_nacimiento).format('MM-DD-YY');
+    console.log(fechaFormateada)
+    this.Fecha_nacimiento = fechaFormateada;
     next();
 });
 
