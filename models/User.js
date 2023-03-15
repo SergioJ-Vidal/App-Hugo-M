@@ -29,7 +29,8 @@ const UserSchema = new mongoose.Schema({
     Role: {
         type: String,
         required: true,
-    }
+    },
+    Tokens: []
 
 }, { timestamps: true });
 
@@ -42,6 +43,12 @@ UserSchema.pre('save', function (next) {
     this.Fecha_nacimiento = fechaFormateada;
     next();
 });
+
+UserSchema.pre('save', function (next) {
+    const fechaFormateada = moment(this.fecha).format('DD-MM-YY');
+    this.fecha = fechaFormateada;
+    next();
+  });
 
 const User = mongoose.model('User', UserSchema);
 
