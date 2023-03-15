@@ -25,6 +25,10 @@ const UserSchema = new mongoose.Schema({
     Fecha_nacimiento: {
         type: Date,
         required: true
+    },
+    Role: {
+        type: String,
+        required: true,
     }
 
 }, { timestamps: true });

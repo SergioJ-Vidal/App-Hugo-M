@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const bcrypt = require("bcryptjs");
 
 const UserController = {
 
@@ -6,7 +7,8 @@ const UserController = {
 
         try {
 
-            const user = await User.create(req.body)
+            const password = await bcrypt.hash(req.body.password, 10)
+            const user = await User.create({ ...req.body, password: password, role: "user" });
 
             res.status(201).send(user)
 
