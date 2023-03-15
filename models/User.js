@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.SchemaTypes.ObjectId;
 const moment = require('moment');
 
 const UserSchema = new mongoose.Schema({
@@ -30,6 +31,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    Citas:[],
     Tokens: []
 
 }, { timestamps: true });
