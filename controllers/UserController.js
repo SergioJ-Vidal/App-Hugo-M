@@ -17,7 +17,6 @@ const UserController = {
         } catch (error) {
 
             console.error(error)
-
             res.status(500).send({ message: 'Ha habido un problema al crear el producto' })
 
         }
@@ -50,9 +49,7 @@ const UserController = {
             const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
 
             if (user.Tokens.length > 4) user.Tokens.shift();
-
             user.Tokens.push(token);
-
             await user.save();
 
             res.send({ message: 'Bienvenid@ ' + user.Nombre, token, user });
@@ -60,7 +57,6 @@ const UserController = {
         } catch (error) {
 
             console.error(error);
-
             res.status(500).send({ message: 'Ha habido un problema al logearte' })
 
         }
@@ -82,7 +78,6 @@ const UserController = {
         } catch (error) {
 
             console.error(error);
-
             res.status(500).send({
 
                 message: "Hubo un problema al intentar conectar al usuario",
